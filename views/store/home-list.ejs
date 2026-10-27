@@ -1,0 +1,71 @@
+
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/styles/home-list.css">
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="home-list-page">
+    <div class="home-list-header">
+      <h1>Find Your Perfect Stay</h1>
+      <p>Explore comfortable homes for your next trip.</p>
+    </div>
+
+    <div class="home-grid">
+      <% registeredHomes.forEach(home => { %>
+        <article class="home-card">
+
+          <a class="home-image-link" href="/homes/<%= home._id %>">
+            <img
+              class="home-image"
+              src="<%= home.photo %>"
+              alt="<%= home.houseName %>"
+            >
+          </a>
+
+          <div class="home-card-content">
+            <h2 class="home-name">
+              <%= home.houseName %>
+            </h2>
+
+            <p class="home-location">
+              <span>📍</span> <%= home.location %>
+            </p>
+
+            <div class="home-rating">
+              ⭐ <%= home.rating %>
+            </div>
+
+            <p class="home-price">
+              ₹<%= home.price %>
+              <span>/ night</span>
+            </p>
+
+            <div class="home-card-actions">
+              <a
+                class="details-btn"
+                href="/homes/<%= home._id %>"
+              >
+                View Details
+              </a>
+
+              <button class="book-btn" type="button">
+                Book
+              </button>
+            </div>
+          </div>
+
+        </article>
+      <% }) %>
+    </div>
+
+    <% if (registeredHomes.length === 0) { %>
+      <div class="empty-homes">
+        <h2>No homes available yet</h2>
+        <p>Please check back later for available stays.</p>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>

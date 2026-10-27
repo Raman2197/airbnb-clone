@@ -1,0 +1,56 @@
+
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/styles/home-detail.css">
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="home-detail-page">
+
+    <div class="home-detail-card">
+
+      <img
+        class="home-detail-image"
+        src="<%= home.photo %>"
+        alt="<%= home.houseName %>"
+      >
+
+      <div class="home-detail-content">
+
+        <h1 class="home-detail"><%= home.houseName %></h1>
+
+        <p class="detail-location">
+          📍 <%= home.location %>
+        </p>
+
+        <div class="detail-rating">
+          ⭐ <%= home.rating %> Rating
+        </div>
+
+        <p class="detail-price">
+          ₹<%= home.price %>
+          <span>/ night</span>
+        </p>
+
+        <div class="detail-divider"></div>
+
+        <div class="house-rules">
+          <h2>Before your stay</h2>
+          <p>Review the house rules before booking your stay.</p>
+
+          <a class="rules-btn" href="/rules/<%= home._id %>">
+            Download House Rules
+          </a>
+        </div>
+
+        <div class="detail-favourites">
+          <%- include('../partials/favourites') %>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>

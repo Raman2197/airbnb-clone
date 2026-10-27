@@ -1,0 +1,76 @@
+
+  
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/styles/favourites.css">
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="favourites-page">
+    <div class="favourites-heading">
+      <h1>Your Favourite Homes <span>♥</span></h1>
+      <p>All the places you've saved for your next stay.</p>
+    </div>
+
+    <% if (favouritesHomes.length === 0) { %>
+      <div class="empty-favourites">
+        <h2>No favourites yet ❤️</h2>
+        <p>Explore homes and save the ones you love.</p>
+        <a href="/home-list" class="explore-btn">Explore Homes</a>
+      </div>
+    <% } else { %>
+
+      <ul class="favourites-list">
+        <% favouritesHomes.forEach(home => { %>
+          <li class="favourite-card">
+
+            <div class="favourite-image-container">
+              <img
+                class="favourite-image"
+                src="<%= home.photo %>"
+                alt="<%= home.houseName %>"
+              >
+              <span class="favourite-heart">♥</span>
+            </div>
+
+            <div class="favourite-details">
+              <h2><%= home.houseName %></h2>
+
+              <div class="favourite-info">
+                <span>📍 <%= home.location %></span>
+                <span class="favourite-rating">
+                  ⭐ <%= home.rating %>
+                </span>
+              </div>
+
+              <p class="favourite-price">
+                ₹<%= home.price %>
+                <span>/ night</span>
+              </p>
+
+              <div class="favourite-actions">
+                <a
+                  class="view-home-btn"
+                  href="/homes/<%= home._id %>"
+                >View Details</a>
+
+                <form
+                  action="/delete/<%= home._id %>"
+                  method="POST"
+                >
+                  <button class="remove-favourite-btn" type="submit">
+                    Remove ♥
+                  </button>
+                </form>
+              </div>
+            </div>
+
+          </li>
+        <% }) %>
+      </ul>
+
+    <% } %>
+  </main>
+</body>
+</html>

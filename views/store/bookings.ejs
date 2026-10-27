@@ -1,0 +1,30 @@
+
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/styles/bookings.css">
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="bookings-page">
+    <section class="bookings-header">
+      <h1>My Bookings</h1>
+      <p>Keep track of the homes you plan to stay in.</p>
+    </section>
+
+    <section class="bookings-content">
+      <div class="bookings-empty">
+        <div class="booking-icon">⌂</div>
+        <h2>No bookings yet</h2>
+        <p>
+          You haven't booked a stay yet. Explore our homes
+          and find the perfect place for your next trip.
+        </p>
+        <a href="/home-list" class="explore-bookings-btn">
+          Explore Homes
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

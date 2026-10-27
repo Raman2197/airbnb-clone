@@ -1,0 +1,58 @@
+
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/styles/login.css">
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="login-page">
+    <div class="login-card">
+
+      <h1>Welcome Back</h1>
+      <p class="login-subtitle">Sign in to your Airbnb account</p>
+
+      <form action="/login" method="POST">
+        <%- include('../partials/errors') %>
+
+        <div class="login-form-group">
+          <label for="email">Email Address</label>
+          <input
+            class="login-input"
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value="<%= oldInput.email || '' %>"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="login-form-group">
+          <label for="password">Password</label>
+          <input
+            class="login-input"
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          >
+        </div>
+
+        <button class="login-submit-btn" type="submit">
+          Sign In <span>→</span>
+        </button>
+
+        <p class="login-signup-link">
+          Don't have an account?
+          <a href="/signup">Create an account</a>
+        </p>
+      </form>
+
+    </div>
+  </main>
+</body>
+</html>

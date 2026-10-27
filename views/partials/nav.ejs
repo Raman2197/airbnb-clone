@@ -1,0 +1,83 @@
+  
+<header class="page-head">
+  <ul class="nav-list">
+
+    <!-- Logo -->
+    <li class="list-item">
+      <a
+        id="homeBtn"
+        class="brand-link <%= currentPage === 'index' ? 'active' : '' %>"
+        href="/"
+      >airbnb</a>
+    </li>
+
+    <% if (isLoggedIn) { %>
+
+      <% if (user && user.userType === 'guest') { %>
+
+        <li class="list-item">
+          <a
+            class="<%= currentPage === 'home-list' ? 'active' : '' %>"
+            href="/home-list"
+          >Homes</a>
+        </li>
+
+        <li class="list-item">
+          <a
+            class="<%= currentPage === 'favourites' ? 'active' : '' %>"
+            href="/favourites"
+          >Favourites</a>
+        </li>
+
+        <li class="list-item">
+          <a
+            class="<%= currentPage === 'bookings' ? 'active' : '' %>"
+            href="/bookings"
+          >Bookings</a>
+        </li>
+
+      <% } else if (user && user.userType === 'host') { %>
+
+        <li class="list-item">
+          <a
+            class="<%= currentPage === 'host-home' ? 'active' : '' %>"
+            href="/host-homes-list"
+          >Host Homes</a>
+        </li>
+
+        <li class="list-item">
+          <a
+            class="<%= currentPage === 'add-home' ? 'active' : '' %>"
+            href="/add-home"
+          >Add Home</a>
+        </li>
+
+      <% } %>
+
+      <!-- Logout -->
+      <li class="list-item logout-item">
+        <form action="/logout" method="POST">
+          <button id="logout-Btn" type="submit">Logout</button>
+        </form>
+      </li>
+
+    <% } else { %>
+
+      <li class="list-item">
+        <a
+          class="<%= currentPage === 'signup' ? 'active' : '' %>"
+          href="/signup"
+        >Signup</a>
+      </li>
+
+      <li class="list-item">
+        <a
+          class="<%= currentPage === 'login' ? 'active' : '' %>"
+          href="/login"
+        >Login</a>
+      </li>
+
+    <% } %>
+
+  </ul>
+</header>

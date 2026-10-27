@@ -1,0 +1,59 @@
+  
+<%- include('../partials/head') %>
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="host-homes-page">
+    <h1>Hey Host! Here are your homes:</h1>
+
+    <ul class="host-homes-list">
+      <% registeredHomes.forEach(home => { %>
+        <li class="host-home-card">
+          <img
+            class="host-home-image"
+            src="<%= home.photo %>"
+            alt="<%= home.houseName %>"
+          >
+
+          <div class="host-home-details">
+            <h2><%= home.houseName %></h2>
+
+            <div class="host-home-info">
+              <span>📍 <%= home.location %></span>
+              <span class="host-home-rating">
+                ⭐ <%= home.rating %>
+              </span>
+            </div>
+
+            <p class="host-home-price">
+              ₹<%= home.price %>
+            </p>
+
+            <p class="host-home-description">
+              <%= home.description %>
+            </p>
+
+            <div class="host-home-actions">
+              <a
+                class="edit-btn"
+                href="/edit-home/<%= home._id %>?editing=true"
+              >Edit</a>
+
+              <form
+                action="/delete-home/<%= home._id %>"
+                method="POST"
+              >
+                <button class="delete-btn" type="submit">
+                  Delete
+                </button>
+              </form>
+            </div>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
+</body>
+</html>

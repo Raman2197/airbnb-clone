@@ -1,0 +1,89 @@
+
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/styles/index.css">
+</head>
+
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="index-page">
+    <section class="index-hero">
+      <div class="hero-content">
+        <span class="hero-tag">YOUR NEXT ADVENTURE STARTS HERE</span>
+        <h1>Find a Place You'll Love to Stay</h1>
+        <p>
+          Discover comfortable homes, beautiful destinations,
+          and memorable stays for your next trip.
+        </p>
+
+        <a href="/home-list" class="explore-btn">
+          Explore All Homes
+        </a>
+      </div>
+    </section>
+
+    <section class="featured-homes">
+      <div class="section-heading">
+        <div>
+          <h2>Explore Our Homes</h2>
+          <p>Find a stay that feels like home.</p>
+        </div>
+
+        <a href="/home-list" class="view-all-link">
+          View all homes →
+        </a>
+      </div>
+
+      <% if (registeredHomes.length > 0) { %>
+        <div class="index-home-grid">
+          <% registeredHomes.forEach(home => { %>
+            <article class="index-home-card">
+              <a
+                class="index-image-link"
+                href="/homes/<%= home._id %>"
+              >
+                <img
+                  class="index-home-image"
+                  src="<%= home.photo %>"
+                  alt="<%= home.houseName %>"
+                >
+              </a>
+
+              <div class="index-home-content">
+                <h3><%= home.houseName %></h3>
+
+                <p class="index-location">
+                  📍 <%= home.location %>
+                </p>
+
+                <div class="index-home-bottom">
+                  <p class="index-price">
+                    ₹<%= home.price %>
+                    <span>/ night</span>
+                  </p>
+
+                  <span class="index-rating">
+                    ⭐ <%= home.rating %>
+                  </span>
+                </div>
+
+                <a
+                  class="index-details-btn"
+                  href="/homes/<%= home._id %>"
+                >
+                  View Details
+                </a>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <div class="index-empty-state">
+          <h3>No homes available yet</h3>
+          <p>Please check back later for available stays.</p>
+        </div>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>
